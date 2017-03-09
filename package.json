@@ -1,0 +1,17 @@
+{
+  "name": "marketing-site",
+  "version": "0.0.0",
+  "description": "Marketing site for Brown Bear Mutual",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brownbearmutual/marketing-site.git"
+  },
+  "author": "Xavier Valarino <xvalarino@gmail.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/brownbearmutual/marketing-site/issues"
+  },
+  "homepage": "https://github.com/brownbearmutual/marketing-site#readme"
+}
