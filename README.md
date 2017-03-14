@@ -26,6 +26,7 @@ This will open your browser to [`localhost:3000`](localhost:3000). The page shou
 - [ ] Create landing page mockup
 - [x] Pick a static site generator (for NodeJS?)
 - [ ] Look into CORS/Ajax request on GitHub pages
+- [ ] Travis CI for site deployement
 - [ ] AdWords and `<meta>` tags for renters insurance?
 - [ ] Create Google Analytics account
 - [ ] Look for free stock images
