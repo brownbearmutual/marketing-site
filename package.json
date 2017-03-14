@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "description": "Marketing site for Brown Bear Mutual",
   "scripts": {
+    "start": "gulp watch:html",
+    "build:html" : "gulp build:html"
   },
   "repository": {
     "type": "git",
@@ -13,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/brownbearmutual/marketing-site/issues"
   },
-  "homepage": "https://github.com/brownbearmutual/marketing-site#readme"
+  "homepage": "https://github.com/brownbearmutual/marketing-site#readme",
+  "devDependencies": {
+    "gulp-front-matter": "^1.3.0",
+    "gulp-markdown": "^1.2.0",
+    "pug": "^2.0.0-beta11",
+    "through2": "^2.0.3"
+  }
 }
