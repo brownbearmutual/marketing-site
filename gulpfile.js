@@ -19,7 +19,9 @@ var fmOpts = {
 }
 var pugOpts = {
     basedir: './src/templates/',
-    cache: true
+    //TODO: find a way to cache the templates,
+    //      but update them when they change
+    cache: false
 }
 
 /*
