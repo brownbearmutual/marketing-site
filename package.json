@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Marketing site for Brown Bear Mutual",
   "scripts": {
-    "start": "npm run server & npm run watch",
+    "start": "npm run watch & npm run server",
     "build:html": "gulp build:html",
     "build:css": "node-sass ./src/styles/ -o ./dist/",
     "build": "npm run build:html & npm run build:css",
