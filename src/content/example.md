@@ -1,7 +1,8 @@
 ---
 title: Example
 template: example.pug
-description:
+keywords: A, comma, seperated, list, of, SEO, search, terms
+description: A description that will appear in the results of search engines
 ---
 
 # An example content page
