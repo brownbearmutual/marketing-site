@@ -38,9 +38,11 @@ gulp.task('build:html', function () {
 
 /*
  * Watch task ------------------------------------------------
+ * run the build task before starting `watch`
  */
-gulp.task('watch:html',function () {
-    gulp.watch(path.src, ['build:html'])
+gulp.task('watch:html', ['build:html'], function () {
+    var htmlFiles = '{' + path.src + ',' + pugOpts.basedir + '**/*.pug}'
+    gulp.watch( htmlFiles, ['build:html'])
 })
 
 /*
