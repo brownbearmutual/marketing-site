@@ -4,11 +4,12 @@ var gulp = require('gulp')
 var frontMatter = require('gulp-front-matter')
 var markdown = require('gulp-markdown')
 var pug = require('pug')
+var path = require('path')
 var through = require('through2').obj
 
 // Options -----------------------------------------------------
 
-var path = {
+var paths = {
     src:  './src/content/**/*.md',
     dest: './dist/',
 }
@@ -19,9 +20,7 @@ var fmOpts = {
 }
 var pugOpts = {
     basedir: './src/templates/',
-    //TODO: find a way to cache the templates,
-    //      but update them when they change
-    cache: false
+    cache: true
 }
 
 /*
@@ -31,11 +30,11 @@ var pugOpts = {
  * and then interpolates them with Pug templates
  */
 gulp.task('build:html', function () {
-    return gulp.src(path.src)
+    return gulp.src(paths.src)
         .pipe(frontMatter(fmOpts))
         .pipe(markdown())
         .pipe(template(pugOpts))
-        .pipe(gulp.dest(path.dest))
+        .pipe(gulp.dest(paths.dest))
 })
 
 /*
@@ -43,8 +42,17 @@ gulp.task('build:html', function () {
  * run the build task before starting `watch`
  */
 gulp.task('watch:html', ['build:html'], function () {
-    var htmlFiles = '{' + path.src + ',' + pugOpts.basedir + '**/*.pug}'
-    gulp.watch( htmlFiles, ['build:html'])
+    var htmlFiles = '{' + paths.src + ',' + pugOpts.basedir + '**/*.pug}'
+    var watch = gulp.watch( htmlFiles, ['build:html'])
+    // If changed file is already cached by Pug, delete the cached version
+    watch.on('change', function (event) {
+        var changed = path.relative(process.cwd(), event.path)
+        var match = Object.keys(pug.cache).find(function (key) {
+                var cached = path.normalize(key)
+                if (cached === changed) return key
+        })
+        if (match) delete pug.cache[match]
+    })
 })
 
 /*
