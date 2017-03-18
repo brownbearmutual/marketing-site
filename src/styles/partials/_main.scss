@@ -1,0 +1,26 @@
+// MAIN
+// layout styles that pertain to the document at large
+
+html,
+body {
+    font-family: $base-font;
+    padding: 0;
+    margin: 0;
+    background: $secondary-color;
+    text-align: center;
+}
+
+.content {
+    margin: 0 11.25rem;
+    text-align: left;
+    // for debugging
+    // border: 1px solid purple;
+}
+
+img {
+    max-width: 75%;
+    height: auto;
+    margin-top: 8rem;
+    // for debugging
+    // border: 1px solid red;
+}
