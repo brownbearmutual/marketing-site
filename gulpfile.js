@@ -41,7 +41,7 @@ gulp.task('build:html', function () {
  * Watch task ------------------------------------------------
  * run the build task before starting `watch`
  */
-gulp.task('watch:html', ['build:html'], function () {
+gulp.task('watch:html', function () {
     var htmlFiles = '{' + paths.src + ',' + pugOpts.basedir + '**/*.pug}'
     var watch = gulp.watch( htmlFiles, ['build:html'])
     // If changed file is already cached by Pug, delete the cached version
