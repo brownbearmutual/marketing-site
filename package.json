@@ -6,10 +6,12 @@
     "start": "npm run watch & npm run server",
     "build:html": "gulp build:html",
     "build:css": "node-sass ./src/styles/ -o ./dist/",
-    "build": "npm run build:html & npm run build:css",
+    "build:img": "imagemin src/assets/img/**/* -o dist/assets/img/",
+    "build": "npm run build:html & npm run build:css & npm run build:img",
     "watch:html": "gulp watch:html",
     "watch:css": "node-sass -w ./src/styles/ -o ./dist/",
-    "watch": "npm run watch:html & npm run watch:css",
+    "watch:img": "chokidar ./src/assets/img/**/* -c 'npm run build:img'",
+    "watch": "npm run build & npm run watch:html & npm run watch:css & npm run watch:img",
     "server": "browser-sync start --directory -s './dist/' -f './dist/'"
   },
   "repository": {
@@ -24,6 +26,7 @@
   "homepage": "https://github.com/brownbearmutual/marketing-site#readme",
   "devDependencies": {
     "browser-sync": "^2.18.8",
+    "chokidar-cli": "^1.2.0",
     "gulp": "^3.9.1",
     "gulp-front-matter": "^1.3.0",
     "gulp-markdown": "^1.2.0",
