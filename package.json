@@ -4,10 +4,11 @@
   "description": "Marketing site for Brown Bear Mutual",
   "scripts": {
     "start": "npm run watch & npm run server",
+    "clean": "rimraf ./dist/*",
     "build:html": "gulp build:html",
     "build:css": "node-sass ./src/styles/ -o ./dist/",
     "build:img": "imagemin src/assets/img/**/* -o dist/assets/img/",
-    "build": "npm run build:html & npm run build:css & npm run build:img",
+    "build": "npm run clean & npm run build:html & npm run build:css & npm run build:img",
     "watch:html": "gulp watch:html",
     "watch:css": "node-sass -w ./src/styles/ -o ./dist/",
     "watch:img": "chokidar ./src/assets/img/**/* -c 'npm run build:img'",
@@ -32,6 +33,7 @@
     "gulp-markdown": "^1.2.0",
     "node-sass": "^4.5.0",
     "pug": "^2.0.0-beta11",
+    "rimraf": "^2.6.1",
     "through2": "^2.0.3"
   }
 }
