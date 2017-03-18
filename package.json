@@ -13,7 +13,7 @@
     "watch:css": "node-sass -w ./src/styles/ -o ./dist/",
     "watch:img": "chokidar ./src/assets/img/**/* -c 'npm run build:img'",
     "watch": "npm run build & npm run watch:html & npm run watch:css & npm run watch:img",
-    "server": "browser-sync start --directory -s './dist/' -f './dist/'"
+    "server": "browser-sync start -s './dist/' -f './dist/'"
   },
   "repository": {
     "type": "git",
