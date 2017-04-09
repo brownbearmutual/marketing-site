@@ -2,7 +2,9 @@
 
 var gulp = require('gulp')
 var frontMatter = require('gulp-front-matter')
-var markdown = require('gulp-markdown')
+var MarkdownIt = require('markdown-it')
+var cssAttributes = require('markdown-it-attrs')
+var gutil = require('gulp-util')
 var pug = require('pug')
 var path = require('path')
 var through = require('through2').obj
@@ -56,7 +58,24 @@ gulp.task('watch:html', function () {
 })
 
 /*
- * Template renderer and -------------------------------------
+ * Markdown parser -------------------------------------------
+ * Using `markdown-it` in a  custom through-stream
+ * since `gulp-markdown-it` dependencies are out of date
+ */
+function markdown () {
+    var md = new MarkdownIt()
+    md.use(cssAttributes)
+    return through(function (file, enc, cb) {
+        var parsed = md.render(file.contents.toString())
+        file.contents = new Buffer(parsed)
+        file.path = gutil.replaceExtension(file.path, '.html');
+        this.push(file)
+        cb()
+    })
+}
+
+/*
+ * Template renderer -----------------------------------------
  * Custom through-stream used to interpolate
  * content files with Pug templates.
  */
